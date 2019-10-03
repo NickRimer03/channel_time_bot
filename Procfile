@@ -1,1 +1,1 @@
-worker: node core.mjs
+worker: node --experimental-modules core.mjs
