@@ -4,20 +4,6 @@ import config from "./config.json";
 const Client = new Discord.Client();
 const { channelID } = config;
 
-Client.on("message", message => {
-  const { author, channel, content } = message;
-
-  if (author.bot) {
-    return;
-  }
-
-  if (content === "clear") {
-    channel.bulkDelete(100);
-  } else if (content === "id") {
-    channel.send(channel.id);
-  }
-});
-
 Client.on("ready", () => {
   console.log("-- channel_time_bot ready");
 
