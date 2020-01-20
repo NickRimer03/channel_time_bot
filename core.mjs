@@ -14,14 +14,14 @@ Client.on("ready", () => {
       const h = `${date.getUTCHours()}`.padStart(2, "0");
       const m = `${date.getUTCMinutes()}`.padStart(2, "0");
       const s = `${date.getUTCSeconds()}`.padStart(2, "0");
-      const name = `${h}-${m}-${s}_utc`;
+      const name = `${h}-${m}-${s}_🇺🇹🇨`;
 
       channel.edit({ name });
     } else {
       console.log("-- get channel error");
       Client.clearInterval(interval);
     }
-  }, 250);
+  }, 5000);
 });
 
 Client.login(process.argv[2] || process.env.BOT_TOKEN);
