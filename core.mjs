@@ -14,7 +14,7 @@ Client.on("ready", () => {
       const h = `${date.getUTCHours()}`.padStart(2, "0");
       const m = `${date.getUTCMinutes()}`.padStart(2, "0");
       const s = `${date.getUTCSeconds()}`.padStart(2, "0");
-      const name = `${h}-${m}-${s}_🇺🇹🇨`;
+      const name = `${h}-${m}-${s}_utc`;
 
       channel.edit({ name });
     } else {
