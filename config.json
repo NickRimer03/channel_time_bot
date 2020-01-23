@@ -1,5 +1,5 @@
 {
-  "guildID": "614553758734614644",
+  "guildIDs": ["614553758734614644", "351366530115698691"],
   "updateInterval": 5000,
   "text": {
     "botReady": "-- channel_time_bot ready",

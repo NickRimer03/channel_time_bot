@@ -2,7 +2,7 @@ import Discord from "discord.js";
 import config from "./config.json";
 
 const Client = new Discord.Client();
-const { guildID, updateInterval, text } = config;
+const { guildIDs, updateInterval, text } = config;
 
 function getClockEmoji({ h, m }) {
   return m < 30 ? text.clock.zero[h] : text.clock.half[h];
@@ -32,22 +32,25 @@ function timeRun(channel) {
 Client.on("ready", () => {
   console.log(text.botReady);
 
-  const guild = Client.guilds.get(guildID);
-  const channel = guild.channels.array().find(({ name, type }) => type === "voice" && name.includes("UTC: "));
-  if (!channel) {
-    const { h, m, s } = getTime();
-    guild
-      .createChannel(`${getClockEmoji({ h, m })} UTC: ${h}-${m}-${s}`, {
-        type: "voice"
-      })
-      .then(ch => {
-        ch.overwritePermissions(guild.roles.get(guildID), { CONNECT: false }).catch(err => console.log(err));
-        timeRun(ch);
-      })
-      .catch(err => console.log(err));
-  } else {
-    timeRun(channel);
-  }
+  guildIDs.forEach(guildID => {
+    const guild = Client.guilds.get(guildID);
+    const channel = guild.channels.array().find(({ name, type }) => type === "voice" && name.includes("UTC: "));
+
+    if (!channel) {
+      const { h, m, s } = getTime();
+      guild
+        .createChannel(`${getClockEmoji({ h, m })} UTC: ${h}-${m}-${s}`, {
+          type: "voice"
+        })
+        .then(ch => {
+          ch.overwritePermissions(guild.roles.get(guildID), { CONNECT: false }).catch(err => console.log(err));
+          timeRun(ch);
+        })
+        .catch(err => console.log(err));
+    } else {
+      timeRun(channel);
+    }
+  });
 });
 
 Client.login(process.argv[2] || process.env.BOT_TOKEN);
