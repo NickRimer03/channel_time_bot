@@ -1,11 +1,11 @@
 export default {
-  "guildIDs": ["614553758734614644", "351366530115698691", "701796455630766232", "382997516322340867"],
-  "updateInterval": 5000,
-  "text": {
-    "botReady": "-- channel_time_bot ready",
-    "getChannelError": "-- get channel error",
-    "clock": {
-      "zero": {
+  guildIDs: ["614553758734614644", "351366530115698691", "701796455630766232", "382997516322340867"],
+  updateInterval: 5000,
+  text: {
+    botReady: "-- channel_time_bot ready",
+    getChannelError: "-- get channel error",
+    clock: {
+      zero: {
         "00": "\uD83D\uDD5B",
         "12": "\uD83D\uDD5B",
         "01": "\uD83D\uDD50",
@@ -29,9 +29,9 @@ export default {
         "10": "\uD83D\uDD59",
         "22": "\uD83D\uDD59",
         "11": "\uD83D\uDD5A",
-        "23": "\uD83D\uDD5A"
+        "23": "\uD83D\uDD5A",
       },
-      "half": {
+      half: {
         "00": "\uD83D\uDD67",
         "12": "\uD83D\uDD67",
         "01": "\uD83D\uDD5C",
@@ -55,8 +55,8 @@ export default {
         "10": "\uD83D\uDD65",
         "22": "\uD83D\uDD65",
         "11": "\uD83D\uDD66",
-        "23": "\uD83D\uDD66"
-      }
-    }
-  }
-}
+        "23": "\uD83D\uDD66",
+      },
+    },
+  },
+};

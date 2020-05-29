@@ -34,17 +34,17 @@ export default () => {
     console.log(text.botReady);
 
     guildIDs.forEach((guildID) => {
-      const guild = Client.guilds.get(guildID);
-      const channel = guild.channels.array().find(({ name, type }) => type === "voice" && name.includes("UTC: "));
+      const guild = Client.guilds.cache.get(guildID);
+      const channel = guild.channels.cache.array().find(({ name, type }) => type === "voice" && name.includes("UTC: "));
 
       if (!channel) {
         const { h, m, s } = getTime();
-        guild
-          .createChannel(`${getClockEmoji({ h, m })} UTC: ${h}-${m}-${s}`, {
+        guild.channels
+          .create(`${getClockEmoji({ h, m })} UTC: ${h}-${m}-${s}`, {
             type: "voice",
           })
           .then((ch) => {
-            ch.overwritePermissions(guild.roles.get(guildID), { CONNECT: false }).catch((err) => console.log(err));
+            ch.createOverwrite(guild.roles.cache.get(guildID), { CONNECT: false }).catch((err) => console.log(err));
             timeRun(ch);
           })
           .catch((err) => console.log(err));
